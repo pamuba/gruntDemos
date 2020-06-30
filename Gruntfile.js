@@ -7,8 +7,13 @@ module.exports = function(grunt){
         concat:{
             js:{
                 // src:['js/JQuery.js', 'js/script.js','js/rslides.js']
-                src:['js/*.js'],
+                src:['js/jquery.js', 'js/*.js'],
+                // src:['js/*.js'],
                 dest:'build/scripts.js'
+            },
+            css:{
+                src:['css/*.css'],
+                dest:'build/styles.css'
             }
         }
     })
@@ -17,8 +22,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-concat')
 
     //Register Tasks
-    grunt.registerTask('run', function(){
-        console.log("Task is running")
-    })
+    grunt.registerTask('concat-js', ['concat:js']);
+
+    grunt.registerTask('concat-css', ['concat:css']);
 
 }
