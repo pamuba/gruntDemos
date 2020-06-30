@@ -1,5 +1,6 @@
 //Load the plugins 
 //register tasks
+var sass = require('node-sass')
 
 module.exports = function(grunt){
     //Configuration
@@ -13,13 +14,27 @@ module.exports = function(grunt){
             },
             css:{
                 src:['css/*.css'],
-                dest:'build/styles.css'
+                dest:'build/style.css'
+            }
+        },
+        sass:{
+            options:{
+                implementation:sass,
+                // sourceMap:true
+            },
+            build:{
+                files:[{
+                    src:'css/sass/styles.scss',
+                    dest:'build/styles.css'
+                }]
             }
         }
-    })
+    });
 
     //Load Plugins
     grunt.loadNpmTasks('grunt-contrib-concat')
+    grunt.loadNpmTasks('grunt-sass')
+
 
     //Register Tasks
     grunt.registerTask('concat-js', ['concat:js']);
