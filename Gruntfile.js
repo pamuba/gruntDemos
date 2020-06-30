@@ -13,7 +13,8 @@ module.exports = function(grunt){
                 dest:'build/scripts.js'
             },
             css:{
-                src:['css/*.css'],
+                // src:['css/*.css'],
+                src:['css/reset.css','css/bootstrap.css','css/style.css'],
                 dest:'build/style.css'
             }
         },
@@ -25,7 +26,15 @@ module.exports = function(grunt){
             build:{
                 files:[{
                     src:'css/sass/styles.scss',
-                    dest:'build/styles.css'
+                    dest:'css/style.css'
+                }]
+            }
+        },
+        uglify:{
+            build:{
+                files:[{
+                    src:'build/scripts.js',
+                    dest:'build/scripts.js'
                 }]
             }
         }
@@ -34,6 +43,7 @@ module.exports = function(grunt){
     //Load Plugins
     grunt.loadNpmTasks('grunt-contrib-concat')
     grunt.loadNpmTasks('grunt-sass')
+    grunt.loadNpmTasks('grunt-contrib-uglify')
 
 
     //Register Tasks
